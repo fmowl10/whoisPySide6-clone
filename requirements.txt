@@ -1,3 +1,3 @@
 PySide6
 qasync
-aiohttp
+aiohttp==3.8.6
