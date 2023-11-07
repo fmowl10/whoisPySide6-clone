@@ -11,14 +11,14 @@ include = ['whoispyside_clone']
 
 [project]
 name = "whoispyside6-clone"
-version = "0.0.0"
-authors = [{ name = "fmowl10" }, { name = "minwookshin" }]
-description = "who is pyside6 clone GUI applications."
+version = "0.0.1"
+authors = [{ name = "fmowl10" }, { name = "minwook-shin" }]
+description = "whois pyside6 clone GUI applications."
 readme = "README.md"
 requires-python = ">=3.9"
 classifiers = [
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: Apache Software License",
+    "License :: OSI Approved :: MIT Software License",
     "Operating System :: OS Independent",
 ]
 dynamic = ["dependencies"]
