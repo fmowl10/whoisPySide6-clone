@@ -1,4 +1,3 @@
-import asyncio
 import dataclasses
 
 from whoispyside6_clone.utils.async_http import AsyncHTTP
@@ -15,12 +14,7 @@ class GeolocationGetter:
     longitude: str
     timezone: str
 
-    def __init__(self, ip):
-        self.ip = ip
-        self.ip_base_url = (f"http://ip-api.com/json/{self.ip}"
-                            f"?fields=status,country,countryCode,lat,lon,timezone,isp,org,query")
-
-        data = asyncio.get_event_loop().run_until_complete(AsyncHTTP(url=self.ip_base_url).get_json_contents())
+    def __init__(self, data: dict[str]):
         if data["status"] == "success":
             self.origin_query = data["query"]
             self.country = data["country"]
@@ -32,6 +26,10 @@ class GeolocationGetter:
             self.timezone = data["timezone"]
 
 
-if __name__ == '__main__':
-    SAMPLE = GeolocationGetter(ip="google.com")
-    print(SAMPLE)
+async def create_geolocationgetter(ip: str) -> GeolocationGetter:
+    ip_base_url = (
+        f"http://ip-api.com/json/{ip}"
+        f"?fields=status,country,countryCode,lat,lon,timezone,isp,org,query"
+    )
+    data = await AsyncHTTP(ip_base_url).get_json_contents()
+    return GeolocationGetter(data)

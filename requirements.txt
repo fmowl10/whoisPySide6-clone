@@ -1,4 +1,4 @@
-PySide6
+PySide6==6.5.1.1
 qasync
 aiohttp==3.8.6
 aiodns==3.1.1
